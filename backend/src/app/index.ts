@@ -10,8 +10,8 @@ import bodyParser from 'body-parser'
 import logger from 'morgan'
 
 import kasboekHandler from '../routes/kasboek'
+import _logger from "../config/logger";
 
-const origins = ['http://localhost:5000']
 const app = express();
 
 const corsConfig= {
@@ -24,7 +24,6 @@ app.use(
   cors({
     ...corsConfig,
     origin: (origin, cb) => {
-      return origins[0]
       cb(null, process.env.NODE_ENV !== "production");
     },
     optionsSuccessStatus: 200,
@@ -43,13 +42,13 @@ app.use("/api/kasboek", kasboekHandler);
 
 
 app.use("/api/*", (req, res, next) => {
-  console.log('-----------------')
   let err = new Error("Not Found");
   next(err);
 });
 
 
 app.get("*", (req, res) => {
+  _logger.info("========================================================")
   res.sendFile(path.join(__dirname, "../../../frontend/public/index.html"));
 });
 
