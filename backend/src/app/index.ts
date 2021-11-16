@@ -11,13 +11,20 @@ import logger from 'morgan'
 
 import kasboekHandler from '../routes/kasboek'
 
-
+const origins = ['http://localhost:5000']
 const app = express();
 
+const corsConfig= {
+	allowHeaders: ['Accept', 'Content-Type', 'Authorization', 'Access-Control-Allow-Credentials', 'x-requested-with'],
+	maxAge: 3 * 60 * 60,
+	credentials: true
+}
 
 app.use(
   cors({
+    ...corsConfig,
     origin: (origin, cb) => {
+      return origins[0]
       cb(null, process.env.NODE_ENV !== "production");
     },
     optionsSuccessStatus: 200,

@@ -9,9 +9,17 @@ const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const morgan_1 = __importDefault(require("morgan"));
 const kasboek_1 = __importDefault(require("../routes/kasboek"));
+const origins = ['http://localhost:5000'];
 const app = express_1.default();
+const corsConfig = {
+    allowHeaders: ['Accept', 'Content-Type', 'Authorization', 'Access-Control-Allow-Credentials', 'x-requested-with'],
+    maxAge: 3 * 60 * 60,
+    credentials: true
+};
 app.use(cors_1.default({
+    ...corsConfig,
     origin: (origin, cb) => {
+        return origins[0];
         cb(null, process.env.NODE_ENV !== "production");
     },
     optionsSuccessStatus: 200,
