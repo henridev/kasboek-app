@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { Row } from "../models";
 import { convertToIsoString } from "../utils";
-const BASE_API_URL = "";
+const BASE_API_URL = window.location.host.includes("localhost") ? 'http://localhost:5000' || "";
 
 
 const enum ENDPOINTSMAP {
