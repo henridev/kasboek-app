@@ -44,8 +44,8 @@ server.listen(process.env.PORT || 5000, () => {
   console.log(`Listening on http://localhost:${process.env.PORT || 5000}`);
 });
 
-secureServer.listen(process.env.PORT || 8433, () => {
-  console.log(`Listening on https://localhost:${process.env.PORT || 8433}`);
+secureServer.listen(8433, () => {
+  console.log(`Listening on https://localhost:${8433}`);
 });
 
 
