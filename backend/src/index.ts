@@ -1,5 +1,5 @@
 import app from './app'
-import {createServer} from 'http'
+// import {createServer} from 'http'
 import {readFileSync} from 'fs'
 import {createServer as createSecureServer} from 'https'
 import {config} from 'dotenv'
@@ -12,7 +12,7 @@ const options = {
   cert:readFileSync('../ssl/domain.cert')
 };
 
-const server = createServer(app);
+// const server = createServer(app);
 const secureServer = createSecureServer(options, app);
 
 const handleError = (error: any) => {
@@ -35,13 +35,13 @@ const handleError = (error: any) => {
   }
 }
 
-server.on("error", handleError);
+// server.on("error", handleError);
 
 secureServer.on("error", handleError);
 
-server.listen(process.env.PORT || 5000, () => {
-  console.log(`Listening on http://localhost:${process.env.PORT || 5000}`);
-});
+// server.listen(process.env.PORT || 5000, () => {
+//   console.log(`Listening on http://localhost:${process.env.PORT || 5000}`);
+// });
 
 secureServer.listen(process.env.PORT || 4433, () => {
   console.log(`Listening on https://localhost:${process.env.PORT || 4433}`);
