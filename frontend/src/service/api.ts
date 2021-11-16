@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { Row } from "../models";
 import { convertToIsoString } from "../utils";
-const BASE_API_URL = process.env.isProd ? "" : 'http://localhost:5000';
+const BASE_API_URL = "";
 
 
 const enum ENDPOINTSMAP {
