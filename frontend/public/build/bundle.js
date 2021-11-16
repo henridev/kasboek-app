@@ -2092,7 +2092,7 @@ var app = (function () {
     function axiosFactory(servicename) {
         const urlpoint = servicename;
         const service = axios$1.create({
-            baseURL: `https://${window.location.hostname}:4433${urlpoint}`,
+            baseURL: `https://${window.location.hostname}:8433${urlpoint}`,
             withCredentials: true,
         });
         service.interceptors.response.use((response) => {

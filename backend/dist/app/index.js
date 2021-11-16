@@ -30,6 +30,7 @@ app.use(body_parser_1.default.json());
 app.use(express_1.default.static(path_1.default.join(__dirname, "../../../frontend/public")));
 app.use("/api/kasboek", kasboek_1.default);
 app.use("/api/*", (req, res, next) => {
+    console.log('-----------------');
     let err = new Error("Not Found");
     next(err);
 });

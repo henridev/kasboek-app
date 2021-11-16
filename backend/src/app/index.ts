@@ -43,6 +43,7 @@ app.use("/api/kasboek", kasboekHandler);
 
 
 app.use("/api/*", (req, res, next) => {
+  console.log('-----------------')
   let err = new Error("Not Found");
   next(err);
 });
