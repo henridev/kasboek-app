@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node ./dist/index.js",
     "tsc": "tsc",
-    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "build": "rm -rf dist && tsc -p tsconfig.json && cp -R ssl dist",
     "watch": "concurrently --kill-others npm:watch-*",
     "watch-typescript": "tsc -w",
     "watch-node": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ts-node src/index.ts"

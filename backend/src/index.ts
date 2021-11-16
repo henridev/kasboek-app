@@ -8,8 +8,8 @@ import path from "path";
 config({ path: path.join(__dirname, "../.env") });
 
 const options = {
-  key:readFileSync('../ssl/domain.key'),
-  cert:readFileSync('../ssl/domain.cert')
+  key:readFileSync(path.join(__dirname, "/ssl/domain.key")),
+  cert:readFileSync(path.join(__dirname, "/ssl/domain.crt"))
 };
 
 // const server = createServer(app);

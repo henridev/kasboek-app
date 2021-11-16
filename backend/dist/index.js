@@ -11,8 +11,8 @@ const dotenv_1 = require("dotenv");
 const path_1 = __importDefault(require("path"));
 dotenv_1.config({ path: path_1.default.join(__dirname, "../.env") });
 const options = {
-    key: fs_1.readFileSync('../ssl/domain.key'),
-    cert: fs_1.readFileSync('../ssl/domain.cert')
+    key: fs_1.readFileSync(path_1.default.join(__dirname, "/ssl/domain.key")),
+    cert: fs_1.readFileSync(path_1.default.join(__dirname, "/ssl/domain.crt"))
 };
 // const server = createServer(app);
 const secureServer = https_1.createServer(options, app_1.default);
