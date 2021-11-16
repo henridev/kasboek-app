@@ -1,4 +1,5 @@
 import svelte from 'rollup-plugin-svelte';
+import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
@@ -75,7 +76,17 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+		replace({
+			FOO: 'bar',
+
+			// 2 level deep object should be stringify
+			process: JSON.stringify({
+				env: {
+					isProd: production,
+				}
+			}),
+		}),
 	],
 	watch: {
 		clearScreen: false

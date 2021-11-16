@@ -1,6 +1,8 @@
 import axios from "axios";
 import type { Row } from "../models";
 import { convertToIsoString } from "../utils";
+const BASE_API_URL = process.env.isProd ? "" : 'http://localhost:5000';
+
 
 const enum ENDPOINTSMAP {
   kasboek = "/api/kasboek",
@@ -26,7 +28,7 @@ const logger = (response) => {
 function axiosFactory(servicename: ENDPOINTSMAP) {
   const urlpoint = servicename;
   const service = axios.create({
-    baseURL: `https://${window.location.hostname}:8433${urlpoint}`,
+    baseURL: `${BASE_API_URL}${urlpoint}`,
     withCredentials: true,
   });
 
